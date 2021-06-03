@@ -7,30 +7,31 @@ SELECT a.ArtistName
 	ORDER BY a.ArtistName ASC;
 
 -- Question 3 (list song and artist)
--- order by used for keywords ASC/DESC
 SELECT s.Title,
        a.ArtistName
   FROM Song s
        LEFT JOIN Artist a on s.ArtistId = a.id;
 
 -- Question 4 (list artist that have a pop album)
--- Select Distinct used to only return (different) values and have no repeats in the list
+-- Distinct used to only return (different) values and have no repeats in the table
 SELECT DISTINCT
-		a.ArtistName
+	a.ArtistName
 	FROM Album 
 	LEFT JOIN Artist a on ArtistId = a.id
 	LEFT JOIN Genre g on GenreId = g.id
 	WHERE g.id = 7; 
 
 -- Question 5 (list artists with jazz/rock)
+-- OR used to query either JAZZ or ROCK
 SELECT DISTINCT
-		a.ArtistName
+	a.ArtistName
 	FROM Album 
 	LEFT JOIN Artist a on ArtistId = a.id
 	LEFT JOIN Genre g on GenreId = g.id
 	WHERE g.id = 4 OR g.id = 2; 
 
 -- Question 6 (list Album with no songs)
+-- JOIN Tables Ablum to Song to see if the ids match/found  
 SELECT	DISTINCT
 		 ab.Id,
 		 ab.Title
@@ -42,7 +43,7 @@ SELECT	DISTINCT
 -- Data should match table of Artist. name and year must be accompanied
 INSERT INTO Artist (ArtistName, YearEstablished) VALUES ('David Bowie', 1962);
 
--- Checking the id of new artist added
+-- Checking the new artist added
 SELECT * FROM Artist;
 
 -- Question 8 (Insert an album from artist)
